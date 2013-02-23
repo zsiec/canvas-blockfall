@@ -1,0 +1,11 @@
+.canvas{
+  text-align: center;
+  border: 3px solid #999;
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: 3px 3px 5px #eaeaea;
+}
+
+canvas#canvas{
+  margin: 0 auto;
+}
