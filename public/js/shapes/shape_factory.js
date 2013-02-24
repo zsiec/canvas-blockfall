@@ -16,7 +16,7 @@
           return 0.5 - Math.random();
         });
       };
-      return this.create(['i', 't', 'o'].shuffle()[0]);
+      return this.create(['i', 't', 'o', 's', 'z'].shuffle()[0]);
     };
 
     ShapeFactory.prototype._create_t_block = function() {
@@ -40,6 +40,24 @@
       color = '#FCDC3B';
       o = [[0, 0], [1, 0], [1, 1], [0, 1]];
       orientations = [o, o, o, o];
+      return new App.Shape(orientations, color);
+    };
+
+    ShapeFactory.prototype._create_s_block = function() {
+      var color, horizontal, orientations, vertical;
+      color = 'green';
+      vertical = [[0, -2], [0, -1], [1, -1], [1, 0]];
+      horizontal = [[0, 0], [1, 0], [1, -1], [2, -1]];
+      orientations = [horizontal, vertical, horizontal, vertical];
+      return new App.Shape(orientations, color);
+    };
+
+    ShapeFactory.prototype._create_z_block = function() {
+      var color, horizontal, orientations, vertical;
+      color = 'red';
+      vertical = [[0, 0], [0, -1], [1, -1], [1, -2]];
+      horizontal = [[0, -1], [1, -1], [1, 0], [2, 0]];
+      orientations = [horizontal, vertical, horizontal, vertical];
       return new App.Shape(orientations, color);
     };
 
