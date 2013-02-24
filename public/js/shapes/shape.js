@@ -37,10 +37,16 @@
 
     Shape.prototype.move_down = function() {
       if (!((this.y + this.bounds().height) > 21)) {
-        this.y++;
+        this.y = this.y + 0.05;
         return true;
       } else {
         return false;
+      }
+    };
+
+    Shape.prototype.force_down = function() {
+      if (!((this.y + this.bounds().height) > 21)) {
+        return this.y++;
       }
     };
 

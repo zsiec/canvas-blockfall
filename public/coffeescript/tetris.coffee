@@ -20,6 +20,9 @@ class Tetris
       if e.keyCode == 39 #right
         @right()
         return false
+      if e.keyCode == 40 #right
+        @force_down()
+        return false
 
    rotate: ->
      @current_block.rotate()
@@ -40,6 +43,10 @@ class Tetris
      else
        return false
 
+   force_down: ->
+     @current_block.force_down()
+     @rerender()
+
    rerender: ->
      @canvas.clear()
      @current_block.render(@canvas)
@@ -48,9 +55,12 @@ class Tetris
      requestAnimFrame(@tick.bind(@))
 
    tick: (context) ->
-     setTimeout (=>
-       @render_next_block() unless @down()
-       requestAnimFrame(@tick.bind(@))), 200
+     #setTimeout (=>
+       #@render_next_block() unless @down()
+       #requestAnimFrame(@tick.bind(@))), 200
+     @render_next_block() unless @down()
+     requestAnimFrame(@tick.bind(@))
+     
 
    render_next_block: ->
      @current_block = App.ShapeFactory.create_random_shape()

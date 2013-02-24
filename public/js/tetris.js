@@ -29,6 +29,10 @@
           _this.right();
           return false;
         }
+        if (e.keyCode === 40) {
+          _this.force_down();
+          return false;
+        }
       });
     };
 
@@ -56,6 +60,11 @@
       }
     };
 
+    Tetris.prototype.force_down = function() {
+      this.current_block.force_down();
+      return this.rerender();
+    };
+
     Tetris.prototype.rerender = function() {
       this.canvas.clear();
       return this.current_block.render(this.canvas);
@@ -66,13 +75,10 @@
     };
 
     Tetris.prototype.tick = function(context) {
-      var _this = this;
-      return setTimeout((function() {
-        if (!_this.down()) {
-          _this.render_next_block();
-        }
-        return requestAnimFrame(_this.tick.bind(_this));
-      }), 200);
+      if (!this.down()) {
+        this.render_next_block();
+      }
+      return requestAnimFrame(this.tick.bind(this));
     };
 
     Tetris.prototype.render_next_block = function() {

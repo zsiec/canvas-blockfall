@@ -20,10 +20,13 @@ class Shape
 
   move_down: -> 
     unless (@y + @bounds().height) > 21
-      @y++ 
+      @y = @y + 0.05 
       true
     else
       false
+
+  force_down: ->
+    @y++ unless (@y + @bounds().height) > 21
 
   rotate: ->
     if @rotation < 3 then @rotation++ else @rotation=0
