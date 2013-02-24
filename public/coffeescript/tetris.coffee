@@ -2,7 +2,7 @@ class Tetris
 
   start: ->
     @canvas = new App.Canvas()
-    @current_block = App.ShapeFactory.create('t')
+    @current_block = App.ShapeFactory.create_random_shape()
     @current_block.render(@canvas)
 
     @start_animation()
@@ -34,8 +34,11 @@ class Tetris
      @rerender()
 
    down: ->
-     @current_block.move_down()
-     @rerender()
+     if @current_block.move_down()
+       @rerender()
+       return true
+     else
+       return false
 
    rerender: ->
      @canvas.clear()
@@ -46,8 +49,12 @@ class Tetris
 
    tick: (context) ->
      setTimeout (=>
-       @down()
-       requestAnimFrame(@tick.bind(@))), 700
+       @render_next_block() unless @down()
+       requestAnimFrame(@tick.bind(@))), 200
+
+   render_next_block: ->
+     @current_block = App.ShapeFactory.create_random_shape()
+     @current_block.render(@canvas)
 
 
 namespace "App", (exports) ->

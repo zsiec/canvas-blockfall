@@ -42,7 +42,9 @@
     };
 
     Canvas.prototype.clear = function() {
-      return this.canvas_context().clearRect(0, 0, 500, 900);
+      this.canvas_context().clearRect(0, 0, 500, 900);
+      this.canvas_context().fillStyle = 'black';
+      return this.canvas_context().fillRect(0, 0, 500, 900);
     };
 
     return Canvas;

@@ -7,17 +7,40 @@
     function ShapeFactory() {}
 
     ShapeFactory.prototype.create = function(shape_abbrev) {
-      switch (shape_abbrev) {
-        case "t":
-          return this._create_t_block();
-      }
+      return this["_create_" + shape_abbrev + "_block"]();
+    };
+
+    ShapeFactory.prototype.create_random_shape = function() {
+      Array.prototype.shuffle = function() {
+        return this.sort(function() {
+          return 0.5 - Math.random();
+        });
+      };
+      return this.create(['i', 't', 'o'].shuffle()[0]);
     };
 
     ShapeFactory.prototype._create_t_block = function() {
       var color, orientations;
-      color = 'green';
+      color = 'purple';
       orientations = [[[0, -1], [1, -1], [2, -1], [1, -2]], [[1, -2], [1, -1], [1, 0], [2, -1]], [[0, -1], [1, -1], [2, -1], [1, 0]], [[0, -1], [1, -1], [1, -2], [1, 0]]];
-      return new App.Shape(orientations, 'purple');
+      return new App.Shape(orientations, color);
+    };
+
+    ShapeFactory.prototype._create_i_block = function() {
+      var color, horizontal, orientations, vertical;
+      color = 'cyan';
+      vertical = [[0, -1], [0, -2], [0, -3], [0, -4]];
+      horizontal = [[-1, -2], [0, -2], [1, -2], [2, -2]];
+      orientations = [horizontal, vertical, horizontal, vertical];
+      return new App.Shape(orientations, color);
+    };
+
+    ShapeFactory.prototype._create_o_block = function() {
+      var color, o, orientations;
+      color = '#FCDC3B';
+      o = [[0, 0], [1, 0], [1, 1], [0, 1]];
+      orientations = [o, o, o, o];
+      return new App.Shape(orientations, color);
     };
 
     return ShapeFactory;

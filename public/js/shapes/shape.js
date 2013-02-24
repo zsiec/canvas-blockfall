@@ -8,7 +8,7 @@
       this.orientations = orientations;
       this.color = color;
       this.rotation = 0;
-      this.y = 2;
+      this.y = -1;
       this.x = 4;
     }
 

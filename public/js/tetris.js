@@ -8,7 +8,7 @@
 
     Tetris.prototype.start = function() {
       this.canvas = new App.Canvas();
-      this.current_block = App.ShapeFactory.create('t');
+      this.current_block = App.ShapeFactory.create_random_shape();
       this.current_block.render(this.canvas);
       this.start_animation();
       return this.bind_keyboard_events();
@@ -48,8 +48,12 @@
     };
 
     Tetris.prototype.down = function() {
-      this.current_block.move_down();
-      return this.rerender();
+      if (this.current_block.move_down()) {
+        this.rerender();
+        return true;
+      } else {
+        return false;
+      }
     };
 
     Tetris.prototype.rerender = function() {
@@ -64,9 +68,16 @@
     Tetris.prototype.tick = function(context) {
       var _this = this;
       return setTimeout((function() {
-        _this.down();
+        if (!_this.down()) {
+          _this.render_next_block();
+        }
         return requestAnimFrame(_this.tick.bind(_this));
-      }), 700);
+      }), 200);
+    };
+
+    Tetris.prototype.render_next_block = function() {
+      this.current_block = App.ShapeFactory.create_random_shape();
+      return this.current_block.render(this.canvas);
     };
 
     return Tetris;

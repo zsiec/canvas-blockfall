@@ -30,7 +30,9 @@ class Canvas
     ctx.globalAlpha = 1
 
   clear: ->
-    @canvas_context().clearRect(0, 0, 500, 900);
-   
+    @canvas_context().clearRect(0, 0, 500, 900)
+    @canvas_context().fillStyle = 'black'
+    @canvas_context().fillRect(0, 0, 500, 900)
+
 namespace "App", (exports) ->
   exports.Canvas = Canvas

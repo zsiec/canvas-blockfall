@@ -5,7 +5,7 @@ class Shape
     @color = color
     @rotation = 0
 
-    @y = 2
+    @y = -1
     @x = 4
 
   render: (canvas) ->
