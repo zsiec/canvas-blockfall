@@ -11,7 +11,7 @@ class ShapeFactory
   _create_t_block: ->
     color = 'purple'
     orientations = [ [[0, -1], [1, -1], [2, -1], [1, -2]],
-                     [[1, -2], [1, -1], [1, 0], [2, -1]],
+                     [[1, -2], [1, -1], [1, 0],  [2, -1]],
                      [[0, -1], [1, -1], [2, -1], [1, 0]],
                      [[0, -1], [1, -1], [1, -2], [1, 0]] ]
     new App.Shape(orientations, color)
@@ -33,31 +33,31 @@ class ShapeFactory
   _create_s_block: ->
     color = 'green'
     vertical =   [[0, -2], [0, -1], [1, -1], [1, 0]]
-    horizontal = [[0, 0], [1, 0], [1, -1], [2, -1]]
+    horizontal = [[0, 0],  [1, 0],  [1, -1], [2, -1]]
     orientations = [ horizontal, vertical, horizontal, vertical ]
     new App.Shape(orientations, color)
 
   _create_z_block: ->
     color = 'red'
-    vertical   = [[0, 0], [0, -1], [1, -1], [1, -2]]
-    horizontal = [[0, -1], [1, -1], [1, 0], [2, 0]]
+    vertical   = [[0, 0],  [0, -1], [1, -1], [1, -2]]
+    horizontal = [[0, -1], [1, -1], [1, 0],  [2, 0]]
     orientations = [ horizontal, vertical, horizontal, vertical ]
     new App.Shape(orientations, color)
 
   _create_l_block: ->
     color = 'orange'
-    orientations = [ [[0, 0], [0, -1], [1, -1], [2, -1]],
-                     [[0, -2], [1, 0], [1, -1], [1, -2]],
+    orientations = [ [[0, 0],  [0, -1], [1, -1], [2, -1]],
+                     [[0, -2], [1, 0],  [1, -1], [1, -2]],
                      [[0, -1], [1, -1], [2, -1], [2, -2]],
-                     [[0, -2], [0, -1], [0, 0], [1, 0]] ]
+                     [[0, -2], [0, -1], [0, 0],  [1, 0]] ]
     new App.Shape(orientations, color)
 
   _create_j_block: ->
     color = 'blue'
-    orientations = [ [[2, 0], [0, -1], [1, -1], [2, -1]],
-                     [[0, 0], [1, 0], [1, -1], [1, -2]],
+    orientations = [ [[2, 0],  [0, -1], [1, -1], [2, -1]],
+                     [[0, 0],  [1, 0],  [1, -1], [1, -2]],
                      [[0, -2], [0, -1], [1, -1], [2, -1]],
-                     [[0, 0], [0, -1], [0, -2], [1, -2]] ]
+                     [[0, 0],  [0, -1], [0, -2], [1, -2]] ]
     new App.Shape(orientations, color)
 
 
