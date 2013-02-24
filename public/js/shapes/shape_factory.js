@@ -11,12 +11,9 @@
     };
 
     ShapeFactory.prototype.create_random_shape = function() {
-      Array.prototype.shuffle = function() {
-        return this.sort(function() {
-          return 0.5 - Math.random();
-        });
-      };
-      return this.create(['i', 't', 'o', 's', 'z'].shuffle()[0]);
+      var index;
+      index = App.PrngOracle.integerRangeInclusive(0, 4);
+      return this.create(['i', 't', 'o', 's', 'z'][index]);
     };
 
     ShapeFactory.prototype._create_t_block = function() {

@@ -4,8 +4,8 @@ class ShapeFactory
     @["_create_#{shape_abbrev}_block"]()
 
   create_random_shape: ->
-    Array::shuffle = -> @sort -> 0.5 - Math.random()
-    @create ['i', 't', 'o', 's', 'z'].shuffle()[0]
+    index = App.PrngOracle.integerRangeInclusive(0, 4)
+    @create ['i', 't', 'o', 's', 'z'][index]
 
   _create_t_block: ->
     color = 'purple'

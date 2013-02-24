@@ -12,6 +12,8 @@
       <link rel="stylesheet" type="text/css" href="/public/{{.}}">
     {{end}}
     {{append . "moreScripts" "js/util/namespace.js"}}
+    {{append . "moreScripts" "js/util/sjcl.js"}}
+    {{append . "moreScripts" "js/util/prng_oracle.js"}}
     {{append . "moreScripts" "js/util/animation_frame.js"}}
     {{append . "moreScripts" "js/tetris.js"}}
     {{append . "moreScripts" "js/canvas/canvas.js"}}
