@@ -4,8 +4,9 @@ class ShapeFactory
     @["_create_#{shape_abbrev}_block"]()
 
   create_random_shape: ->
-    index = App.PrngOracle.integerRangeInclusive(0, 4)
-    @create ['i', 't', 'o', 's', 'z'][index]
+    shapes = ['l', 'i', 'o', 'z', 'j', 't', 's']
+    index = App.PrngOracle.integerRangeInclusive(0, shapes.length-1)
+    @create shapes[index]
 
   _create_t_block: ->
     color = 'purple'
@@ -41,6 +42,22 @@ class ShapeFactory
     vertical   = [[0, 0], [0, -1], [1, -1], [1, -2]]
     horizontal = [[0, -1], [1, -1], [1, 0], [2, 0]]
     orientations = [ horizontal, vertical, horizontal, vertical ]
+    new App.Shape(orientations, color)
+
+  _create_l_block: ->
+    color = 'orange'
+    orientations = [ [[0, 0], [0, -1], [1, -1], [2, -1]],
+                     [[0, -2], [1, 0], [1, -1], [1, -2]],
+                     [[0, -1], [1, -1], [2, -1], [2, -2]],
+                     [[0, -2], [0, -1], [0, 0], [1, 0]] ]
+    new App.Shape(orientations, color)
+
+  _create_j_block: ->
+    color = 'blue'
+    orientations = [ [[2, 0], [0, -1], [1, -1], [2, -1]],
+                     [[0, 0], [1, 0], [1, -1], [1, -2]],
+                     [[0, -2], [0, -1], [1, -1], [2, -1]],
+                     [[0, 0], [0, -1], [0, -2], [1, -2]] ]
     new App.Shape(orientations, color)
 
 

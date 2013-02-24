@@ -11,9 +11,10 @@
     };
 
     ShapeFactory.prototype.create_random_shape = function() {
-      var index;
-      index = App.PrngOracle.integerRangeInclusive(0, 4);
-      return this.create(['i', 't', 'o', 's', 'z'][index]);
+      var index, shapes;
+      shapes = ['l', 'i', 'o', 'z', 'j', 't', 's'];
+      index = App.PrngOracle.integerRangeInclusive(0, shapes.length - 1);
+      return this.create(shapes[index]);
     };
 
     ShapeFactory.prototype._create_t_block = function() {
@@ -55,6 +56,20 @@
       vertical = [[0, 0], [0, -1], [1, -1], [1, -2]];
       horizontal = [[0, -1], [1, -1], [1, 0], [2, 0]];
       orientations = [horizontal, vertical, horizontal, vertical];
+      return new App.Shape(orientations, color);
+    };
+
+    ShapeFactory.prototype._create_l_block = function() {
+      var color, orientations;
+      color = 'orange';
+      orientations = [[[0, 0], [0, -1], [1, -1], [2, -1]], [[0, -2], [1, 0], [1, -1], [1, -2]], [[0, -1], [1, -1], [2, -1], [2, -2]], [[0, -2], [0, -1], [0, 0], [1, 0]]];
+      return new App.Shape(orientations, color);
+    };
+
+    ShapeFactory.prototype._create_j_block = function() {
+      var color, orientations;
+      color = 'blue';
+      orientations = [[[2, 0], [0, -1], [1, -1], [2, -1]], [[0, 0], [1, 0], [1, -1], [1, -2]], [[0, -2], [0, -1], [1, -1], [2, -1]], [[0, 0], [0, -1], [0, -2], [1, -2]]];
       return new App.Shape(orientations, color);
     };
 
